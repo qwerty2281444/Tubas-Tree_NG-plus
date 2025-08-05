@@ -1558,4 +1558,10 @@ addLayer("re", {
     ],
     layerShown(){return hasUpgrade("sp",25)},
     branches: ["r"],
+      infoboxes: {
+    lore: {
+        title: "Super-Prestige",
+        body() { return "<span style='font-size: 18px;'>What is that?</span>" },
+    },
+}
 })
