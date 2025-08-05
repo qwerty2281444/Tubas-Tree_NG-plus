@@ -33,6 +33,7 @@ addLayer("p", {
         mult = mult.mul(buyableEffect("sp",11))
         mult = mult.mul(hasUpgrade("sp",14)?upgradeEffect("sp",14):1)
         mult = mult.pow(hasUpgrade("sp",22)?2:1)
+
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -1570,10 +1571,15 @@ addLayer("re", {
         effectDescription: "Automate and keep prestige",
         done() { return player.re.points.gte(1) }
     },
+    1: {
+        requirementDescription: "10000 soul",
+        effectDescription: "Automate and keep ascend",
+        done() { return player.re.points.gte(10000) }
+    },
   },
       infoboxes: {
     lore: {
-        title: "Super-Prestige",
+        title: "Rebirth",
         body() { return "<span style='font-size: 18px;'>What is that?</span>" },
     },
 }
