@@ -8,6 +8,7 @@ addLayer("p", {
     }},
     passiveGeneration(){
       return hasMilestone("a", 2) ? 1 : 0
+      return hasMilestone("re", 0) ? 1 : 0
     },
     color: "#006666",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
