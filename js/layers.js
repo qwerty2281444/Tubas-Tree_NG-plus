@@ -70,6 +70,11 @@ addLayer("p", {
       if (layer=="sp"){
         if (hasMilestone("sp", 0)) keep.push("upgrades")
       }
+      if (layer=="re"){
+        if (hasMilestone("re", 0)) keep.push("upgrades")
+        if (!hasMilestone("r", 1)) player.p.auto = true;
+        if (!hasMilestone("r", 1)) player.p.auto2 = true;
+      }
       layerDataReset("p",keep)
     },
     upgrades: {
@@ -1558,6 +1563,13 @@ addLayer("re", {
     ],
     layerShown(){return hasUpgrade("sp",25)},
     branches: ["r"],
+      milestones: {
+    0: {
+        requirementDescription: "1 soul",
+        effectDescription: "Automate and keep prestige",
+        done() { return player.re.points.gte(1) }
+    },
+  },
       infoboxes: {
     lore: {
         title: "Super-Prestige",
