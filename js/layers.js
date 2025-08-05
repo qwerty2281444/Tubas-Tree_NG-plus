@@ -1493,8 +1493,8 @@ addLayer("sp", {
         unlocked(){return hasUpgrade("sp",23) || hasUpgrade("sp",24)},
       },
       25: {
-        title: "The Last Upgrade",
-        description: "Points ^1.01.",
+        title: "Not The Last Upgrade",
+        description: "Points ^1.01. and unlock something huge",
         cost: new Decimal(1e51),
         unlocked(){return hasUpgrade("sp",24) || hasUpgrade("sp",25)},
       },
@@ -1556,6 +1556,6 @@ addLayer("re", {
     hotkeys: [
         {key: "e", description: "E: Reset for Souls", unlocked(){return hasUpgrade("r",51)}, onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return hasUpgrade("r",51)},
+    layerShown(){return hasUpgrade("sp",25)},
     branches: ["r"],
 })
