@@ -33,6 +33,7 @@ addLayer("p", {
         mult = mult.mul(buyableEffect("sp",11))
         mult = mult.mul(hasUpgrade("sp",14)?upgradeEffect("sp",14):1)
         mult = mult.pow(hasUpgrade("sp",22)?2:1)
+        mult = mult.mul(hasUpgrade("re",11))
 
         return mult
     },
@@ -294,6 +295,7 @@ addLayer("a", {
         mult = mult.mul(inChallenge("t",51) || inChallenge("t",52) ? new Decimal(1) : player.r.quarkEnergy.add(1).pow(new Decimal(2.5).add(hasUpgrade("r",14)?player.r.total.log10().div(10):0)))
         mult = mult.mul(buyableEffect("a",13))
         mult = mult.mul(inChallenge("r",12)?0:1)
+        mult = mult.mul(hasUpgrade("re",11))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -597,6 +599,7 @@ addLayer("t", {
         mult = mult.pow(1+(challengeCompletions("r",12)/5))
         mult = mult.pow(hasUpgrade("t",44)?1.5:1)
         mult = mult.mul(hasUpgrade("sp",24)?"1e1000000000000":1)
+        mult = mult.mul(hasUpgrade("re",11))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -987,6 +990,7 @@ addLayer("r", {
         if(mult.gte("1e2500")){mult=new Decimal(10).pow(mult.log10().pow(0.5))}
         mult = mult.mul(hasUpgrade("r",44)?upgradeEffect("r",44):1)
         mult = mult.pow(1+(challengeCompletions("r",31)/2))
+        mult = mult.mul(hasUpgrade("re",11))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -1432,6 +1436,7 @@ addLayer("sp", {
     exponent: 0.000000000001, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        mult = mult.mul(hasUpgrade("re",11))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -1576,6 +1581,14 @@ addLayer("re", {
         effectDescription: "Automate and keep ascend",
         done() { return player.re.points.gte(10000) }
     },
+  },
+
+  11: {
+    title: "Soul booster",
+    description: "Souls boosts points, PP, AP, TP, Shards, Quarks, Sacrificial gifts and SPP.",
+    cost: new Decimal(1),
+    effect(){return player.re.total.pow(15)},
+    effectDisplay(){return `x${format(this.effect())}`}
   },
       infoboxes: {
     lore: {

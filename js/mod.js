@@ -132,6 +132,7 @@ function getPointGen() {
   gain = gain.mul(hasUpgrade("sp",11)?"1e1e11":1)
   gain = gain.mul(hasUpgrade("sp",15)?"1e5e12":1)
   gain = gain.pow(hasUpgrade("sp",25)?1.01:1)
+  gain = gain.mul(hasUpgrade("re",11))
 	return gain
 }
 
