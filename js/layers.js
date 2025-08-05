@@ -1585,7 +1585,7 @@ addLayer("re", {
 
   11: {
     title: "Soul booster",
-    description: "Souls boosts points, PP, AP, TP, Shards, Quarks, Sacrificial gifts and SPP.",
+    description: "Souls boosts points, PP, AP, TP, Shards, Quarks and SPP.",
     cost: new Decimal(1),
     effect(){return player.re.total.pow(15)},
     effectDisplay(){return `x${format(this.effect())}`}
